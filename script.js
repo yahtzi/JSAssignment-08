@@ -10,15 +10,21 @@
 // immediately apply them. Make sure you also notify the user somehow that the preferences
 // were saved.
 
-let textField = document.getElementById("textField");
-let colorField = document.getElementById("colorField");
-let form = document.querySelector("form");
+let textField = document.getElementById("foreground-color");
+let colorField = document.getElementById("background-color");
+let form = document.getElementById("preferences-form");
+let backgroundColorPreference = localStorage.getItem("backgroundColorPreference");
+let textColorPreferences = localStorage.getItem("textColorPreference");
 
-function setPreferences(event) {
+function setColorPreferences(event) {
     event.preventDefault();
+    let body = document.querySelector("body");
+    let colorFieldContents = colorField.value;
+    let textFieldContents = textField.value;
+    body.style.backgroundColor = colorFieldContents;
+    body.style.color = textFieldContents;
+    localStorage.setItem("backgroundColorPreference", colorFieldContents);
+    localStorage.setItem("textColorPreference", textFieldContents);
 }
 
-let textFieldContents = textField.value;
-let colorFieldContents = colorField.value;
-
-form.addEventListener("submit", setPreferences);
+form.addEventListener("submit", setColorPreferences);
