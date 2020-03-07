@@ -9,3 +9,16 @@
 // also want to call this function again when the user saves their preferences to
 // immediately apply them. Make sure you also notify the user somehow that the preferences
 // were saved.
+
+let textField = document.getElementById("textField");
+let colorField = document.getElementById("colorField");
+let form = document.querySelector("form");
+
+function setPreferences(event) {
+    event.preventDefault();
+}
+
+let textFieldContents = textField.value;
+let colorFieldContents = colorField.value;
+
+form.addEventListener("submit", setPreferences);
