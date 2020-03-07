@@ -13,8 +13,8 @@
 let textField = document.getElementById("foreground-color");
 let colorField = document.getElementById("background-color");
 let form = document.getElementById("preferences-form");
-let backgroundColorPreference = localStorage.getItem("backgroundColorPreference");
-let textColorPreferences = localStorage.getItem("textColorPreference");
+let savedColor = localStorage.getItem("backgroundColorPreference");
+let savedTextColor = localStorage.getItem("textColorPreference");
 
 function setColorPreferences(event) {
     event.preventDefault();
@@ -27,4 +27,14 @@ function setColorPreferences(event) {
     localStorage.setItem("textColorPreference", textFieldContents);
 }
 
+function keepPreferences() {
+    if (savedColor != null) {
+        body.style.backgroundColor = savedColor;
+    }
+    if(savedTextColor != null) {
+        body.style.color = savedTextColor;
+    }
+}
+
 form.addEventListener("submit", setColorPreferences);
+keepPreferences();
