@@ -22,7 +22,7 @@ function keepPreferences() {
         body.style.backgroundColor = backgroundColorPreference;
     }
     if(textColorPreference != null) {
-        body.style.color = textColorPreference;
+        body.style.color = textColorPreference0;
     }
 }
 
@@ -30,14 +30,11 @@ function setColorPreferences(event) {
     event.preventDefault();
     let colorFieldContents = colorField.value;
     let textFieldContents = textField.value;
-
     body.style.backgroundColor = colorFieldContents;
     body.style.color = textFieldContents;
-
     localStorage.setItem("backgroundColorPreference", colorFieldContents);
     localStorage.setItem("textColorPreference", textFieldContents);
 }
 
 keepPreferences();
-
 form.addEventListener("submit", setColorPreferences);
