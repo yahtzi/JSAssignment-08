@@ -13,28 +13,31 @@
 let textField = document.getElementById("foreground-color");
 let colorField = document.getElementById("background-color");
 let form = document.getElementById("preferences-form");
-let savedColor = localStorage.getItem("backgroundColorPreference");
-let savedTextColor = localStorage.getItem("textColorPreference");
+let backgroundColorPreference = localStorage.getItem("backgroundColorPreference");
+let textColorPreference = localStorage.getItem("textColorPreference");
+let body = document.querySelector("body");
+
+function keepPreferences() {
+    if (backgroundColorPreference != null) {
+        body.style.backgroundColor = backgroundColorPreference;
+    }
+    if(textColorPreference != null) {
+        body.style.color = textColorPreference;
+    }
+}
 
 function setColorPreferences(event) {
     event.preventDefault();
-    let body = document.querySelector("body");
     let colorFieldContents = colorField.value;
     let textFieldContents = textField.value;
+
     body.style.backgroundColor = colorFieldContents;
     body.style.color = textFieldContents;
+
     localStorage.setItem("backgroundColorPreference", colorFieldContents);
     localStorage.setItem("textColorPreference", textFieldContents);
 }
 
-function keepPreferences() {
-    if (savedColor != null) {
-        body.style.backgroundColor = savedColor;
-    }
-    if(savedTextColor != null) {
-        body.style.color = savedTextColor;
-    }
-}
+keepPreferences();
 
 form.addEventListener("submit", setColorPreferences);
-keepPreferences();
