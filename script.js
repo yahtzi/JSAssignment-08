@@ -13,16 +13,16 @@
 let textField = document.getElementById("foreground-color");
 let colorField = document.getElementById("background-color");
 let form = document.getElementById("preferences-form");
-let backgroundColorPreference = localStorage.getItem("backgroundColorPreference");
-let textColorPreference = localStorage.getItem("textColorPreference");
 let body = document.querySelector("body");
+let savedColor = localStorage.getItem("backgroundColorPreference");
+let savedText = localStorage.getItem("textColorPreference");
 
 function keepPreferences() {
-    if (backgroundColorPreference != null) {
-        body.style.backgroundColor = backgroundColorPreference;
+    if (savedColor != null) {
+        body.style.backgroundColor = savedColor;
     }
-    if(textColorPreference != null) {
-        body.style.color = textColorPreference0;
+    if(savedText != null) {
+        body.style.color = savedText;
     }
 }
 
@@ -34,6 +34,7 @@ function setColorPreferences(event) {
     body.style.color = textFieldContents;
     localStorage.setItem("backgroundColorPreference", colorFieldContents);
     localStorage.setItem("textColorPreference", textFieldContents);
+    alert("Your preferences have been saved!");
 }
 
 keepPreferences();
